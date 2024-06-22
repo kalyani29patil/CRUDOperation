@@ -20,13 +20,21 @@ public class UserServiceImpl implements UserServiceI {
         return saveUser;
     }
 
+      //kalyani,24,developer
+      //rahul,27,tester
     @Override
     public User updateUser(User user, Long userId) {
 
+        User user1 = userRepository.findById(userId).get();
+
+        user1.setUserName(user.getUserName());
+        user1.setUserAge(user.getUserAge());
+        user1.setAbout(user.getAbout());
+
+        User updatedUser = userRepository.save(user1);
 
 
-
-        return null;
+        return updatedUser;
     }
 
     @Override
