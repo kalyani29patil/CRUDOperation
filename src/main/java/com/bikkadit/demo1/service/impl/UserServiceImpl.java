@@ -6,6 +6,7 @@ import com.bikkadit.demo1.service.UserServiceI;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+import java.util.Optional;
 
 public class UserServiceImpl implements UserServiceI {
 
@@ -39,16 +40,38 @@ public class UserServiceImpl implements UserServiceI {
 
     @Override
     public User getSingleUser(Long userId) {
-        return null;
+
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("Resourse not found on server!!" +userId));
+        return user;
+
     }
+
+//        Optional<User> user = userRepository.findById(userId);
+//
+//        if(user.isPresent()){
+//            return user.get();
+//        }else {
+//
+//        throw new NullPointerException("Resourse not found on server");
+//    }
+//    }
+
+
+
 
     @Override
     public List<User> getAllUsers() {
-        return null;
+        List<User> allUsers = userRepository.findAll();
+
+
+        return allUsers;
     }
 
     @Override
     public void deleteUser(Long userId) {
 
+        User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("Resourse not found on server!!" + userId));
+        userRepository.delete(user);
     }
 }
