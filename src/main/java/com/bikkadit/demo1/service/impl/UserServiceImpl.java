@@ -23,8 +23,7 @@ public class UserServiceImpl implements UserServiceI {
     @Override
     public User updateUser(User user, Long userId) {
 
-               System.out.println("this is test");
-               System.out.println("this is a second test");
+
 
 
         return null;
