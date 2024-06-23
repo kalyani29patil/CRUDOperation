@@ -54,7 +54,7 @@ public class UserServiceImpl implements UserServiceI {
 //        if(user.isPresent()) {
 //            return user.get();
 //        }else{
-//            throw new Exception("Resource not found on server!!" +userId);
+//            throw new NullPointerException("Resource not found on server!!" +userId);
 //        }
 
 
