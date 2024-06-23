@@ -6,6 +6,7 @@ import com.bikkadit.demo1.service.UserServiceI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 import java.util.List;
 import java.util.Optional;
 
@@ -42,22 +43,22 @@ public class UserServiceImpl implements UserServiceI {
 
     @Override
     public User getSingleUser(Long userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("Resource not found on server!!" + userId));
 
-//        User user = userRepository.findById(userId)
-//                .orElseThrow(() -> new RuntimeException("Resourse not found on server!!" +userId));
-//        return user;
+        return user;
+
+    }
+
+//        Optional<User> user = userRepository.findById(userId);
 //
+//        if(user.isPresent()){
+//            return user.get();
+//        }else {
+//
+//        throw new NullPointerException("Resourse not found on server");
 //    }
-
-        Optional<User> user = userRepository.findById(userId);
-
-        if(user.isPresent()){
-            return user.get();
-        }else {
-
-        throw new NullPointerException("Resourse not found on server");
-    }
-    }
+//    }
 
 
 
