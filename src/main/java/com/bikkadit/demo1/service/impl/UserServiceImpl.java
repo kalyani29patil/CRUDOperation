@@ -4,10 +4,12 @@ import com.bikkadit.demo1.model.User;
 import com.bikkadit.demo1.repository.UserRepository;
 import com.bikkadit.demo1.service.UserServiceI;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class UserServiceImpl implements UserServiceI {
 
    @Autowired
