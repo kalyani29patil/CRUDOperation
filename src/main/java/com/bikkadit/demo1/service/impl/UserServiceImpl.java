@@ -42,23 +42,23 @@ public class UserServiceImpl implements UserServiceI {
     }
 
     @Override
-    public User getSingleUser(Long userId) {
-        User user = userRepository.findById(userId)
-                .orElseThrow(() -> new RuntimeException("Resource not found on server!!" + userId));
+    public User getSingleUser(Long userId) throws Exception {
+        User user = userRepository.findById(userId).
+                orElseThrow(() -> new RuntimeException("Resource not found on server " + userId));
+
 
         return user;
 
-    }
-
 //        Optional<User> user = userRepository.findById(userId);
 //
-//        if(user.isPresent()){
+//        if(user.isPresent()) {
 //            return user.get();
-//        }else {
-//
-//        throw new NullPointerException("Resourse not found on server");
-//    }
-//    }
+//        }else{
+//            throw new Exception("Resource not found on server!!" +userId);
+//        }
+
+
+    }
 
 
 

@@ -32,7 +32,7 @@ public class UserController {
     }
 
     @GetMapping("users/{userId}")
-    public ResponseEntity<User> getSingleUser(@PathVariable Long userId){
+    public ResponseEntity<User> getSingleUser(@PathVariable Long userId) throws Exception {
         User user = userServiceI.getSingleUser(userId);
         return new ResponseEntity<>(user, HttpStatus.OK);
 
